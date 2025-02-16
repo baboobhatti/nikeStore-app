@@ -51,7 +51,7 @@ export const order = {
             title: 'Order Item',
             fields: [
               {
-                name: '_id',
+                name: 'id',
                 title: 'Product ID',
                 type: 'string',
               },
