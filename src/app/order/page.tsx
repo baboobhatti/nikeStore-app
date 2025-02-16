@@ -61,7 +61,10 @@ const PlaceOrderPage = () => {
       city,
       zip,
       phone,
-      orderItems: orderItems, // Structure this as needed for your schema
+      orderItems: orderItems.map(orderData =>({
+        _type: 'reference',
+        _ref: orderData._id 
+      })), // Structure this as needed for your schema
       totalPrice,
       createdAt: new Date().toISOString(),
     };

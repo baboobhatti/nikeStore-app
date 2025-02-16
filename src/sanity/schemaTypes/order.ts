@@ -33,12 +33,12 @@ export const order = {
       {
         name: 'zip',
         title: 'Zip Code',
-        type: 'string',
+        type: 'number',
       },
       {
         name: 'phone',
         title: 'Phone Number',
-        type: 'string',
+        type: 'number',
       },
       {
         name: 'orderItems',
@@ -46,42 +46,8 @@ export const order = {
         type: 'array',
         of: [
           {
-            type: 'product',
-            name: 'orderItem',
-            title: 'Order Item',
-            fields: [
-              {
-                name: 'id',
-                title: 'Product ID',
-                type: 'string',
-              },
-              {
-                name: 'productName',
-                title: 'Product Name',
-                type: 'string',
-              },
-              {
-                name: 'price',
-                title: 'Price',
-                type: 'number',
-              },
-              {
-                name: 'quantity',
-                title: 'Quantity',
-                type: 'number',
-              },
-              {
-                name: 'imageUrl',
-                title: 'Image URL',
-                type: 'string',
-              },
-            ],
-            preview: {
-              select: {
-                title: 'productName',
-                subtitle: 'quantity',
-              },
-            },
+            type: 'reference',
+            to: [{ type: 'product' }],
           },
         ],
       },
