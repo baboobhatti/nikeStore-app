@@ -33,48 +33,69 @@ const CheckoutPage = () => {
   }, 0);
 
   return (
-    <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Checkout</h1>
+    <div className="min-h-screen bg-gray-100 p-4">
+  <div className="container mx-auto max-w-4xl">
+    <div className="bg-white shadow-lg rounded-lg p-6">
+      <h1 className="text-3xl font-bold mb-6 text-center">Checkout</h1>
       {checkoutItems.length === 0 ? (
-        <p>No items in your cart.</p>
+        <p className="text-center text-gray-500">Your cart is empty.</p>
       ) : (
         <>
-          <ul className="border mb-4">
+          <ul className="divide-y divide-gray-200">
             {checkoutItems.map((item, index) => (
-              <li key={index} className="border p-2 my-2 flex items-center justify-between bg-blue-100">
+              <li
+                key={index}
+                className="py-4 flex flex-col sm:flex-row items-center justify-between"
+              >
                 <div className="flex items-center gap-4">
                   <Image
-                    className="w-[80px] h-[80px] object-cover"
-                    src={item.imageUrl ? urlFor(item.imageUrl).url() : "/images/femal.png"}
-                    alt="ProductImage"
+                    className="w-20 h-20 object-cover rounded"
+                    src={
+                      item.imageUrl
+                        ? urlFor(item.imageUrl).url()
+                        : "/images/femal.png"
+                    }
+                    alt="Product Image"
                     width={80}
                     height={80}
                   />
                   <div>
-                    <h2 className="font-semibold">{item.productName}</h2>
-                    <p>Quantity: {item.quantity}</p>
-                    <p>Subtotal: Rs. {Number(item.price) * item.quantity}</p>
+                    <h2 className="font-semibold text-lg">
+                      Name: {item.productName}
+                    </h2>
+                    <p>Color: {item.colors}</p>
+                    <p className="text-gray-600">Quantity: {item.quantity}</p>
+                    <p className="text-gray-600">
+                      Subtotal: Rs. {Number(item.price) * item.quantity}
+                    </p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
-          <div className="text-xl font-semibold mb-4">Total: Rs. {totalPrice}</div>          
-          <Link href="/order">
-            <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
-              Place Order
-            </button>
-          </Link>
-          <div className="mt-4">
-            <Link href="/cart">
-              <button className="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
-                Back to Cart
-              </button>
-            </Link>
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-6">
+            <div className="text-xl font-semibold">
+              Total: Rs. {totalPrice}
+            </div>
+            <div className="flex flex-col sm:flex-row gap-4 mt-4 md:mt-0">
+              <Link href="/order">
+                <button className="w-full sm:w-auto bg-green-500 text-white px-6 py-3 rounded hover:bg-green-600 transition">
+                  Place Order
+                </button>
+              </Link>
+              <Link href="/cart">
+                <button className="w-full sm:w-auto bg-gray-500 text-white px-6 py-3 rounded hover:bg-gray-600 transition">
+                  Back to Cart
+                </button>
+              </Link>
+            </div>
           </div>
         </>
       )}
     </div>
+  </div>
+</div>
+
   );
 };
 

@@ -102,50 +102,68 @@ const CartPageContent = () => {
   };
 
   return (
-    <div className="p-4 h-[100vh]">
-      <h1 className="text-2xl font-bold mb-4">Shopping Cart</h1>
+    <div className="min-h-screen bg-gray-100 p-6">
+    <div className="container mx-auto max-w-4xl">
+      <h1 className="text-3xl font-bold mb-6 text-center">Shopping Cart</h1>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-center text-gray-600">Your cart is empty.</p>
       ) : (
         <>
-          <ul className="border">
+          <ul className="space-y-4">
             {cart.map((item, index) =>
               item ? (
-                <li key={index} className="border p-2 my-2 flex items-center justify-between bg-blue-300">
-                  <div className="flex items-center gap-4">
-                    <Image
-                      className="w-[100px] h-[100px] object-cover"
-                      src={item.imageUrl ? urlFor(item.imageUrl).url() : "/images/femal.png"}
-                      alt="ProductImage"
-                      width={100}
-                      height={100}
-                    />
-                    <div>
-                      <h2 className="font-semibold">{item.productName}</h2>
-                      <p>Unit Price: Rs. {item.price}</p>
-                      <p>Quantity: {item.quantity}</p>
-                      <p>Inventory: {item.inventory}</p>
-                      <p>Colors: {item.colors}</p>
-                      <p>Total: Rs. {Number(item.price) * item.quantity}</p>
+                <li
+                  key={index}
+                  className="bg-white shadow-md rounded-lg p-4 flex flex-col sm:flex-row items-center justify-between"
+                >
+                  <div className="flex items-center gap-4 w-full">
+                    <div className="w-24 h-24 flex-shrink-0">
+                      <Image
+                        className="w-full h-full object-cover rounded"
+                        src={
+                          item.imageUrl
+                            ? urlFor(item.imageUrl).url()
+                            : "/images/femal.png"
+                        }
+                        alt="Product Image"
+                        width={100}
+                        height={100}
+                      />
+                    </div>
+                    <div className="flex-grow">
+                      <h2 className="text-xl font-semibold">
+                        {item.productName}
+                      </h2>
+                      <p className="text-gray-500">Colors: {item.colors}</p>
+                      <p className="text-gray-500">
+                        Unit Price: Rs. {item.price}
+                      </p>
+                      <p className="text-gray-500">Quantity: {item.quantity}</p>
+                      <p className="text-gray-500">
+                        Inventory: {item.inventory}
+                      </p>
+                      <p className="text-gray-700 font-medium">
+                        Total: Rs. {Number(item.price) * item.quantity}
+                      </p>
                     </div>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <button 
+                  <div className="mt-4 sm:mt-0 flex items-center gap-2">
+                    <button
                       onClick={() => handleDecrement(item._id)}
-                      className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
+                      className="bg-gray-300 text-gray-700 px-3 py-1 rounded hover:bg-gray-400 transition"
                     >
                       -
                     </button>
-                    <span>{item.quantity}</span>
-                    <button 
+                    <span className="font-semibold">{item.quantity}</span>
+                    <button
                       onClick={() => handleIncrement(item._id)}
-                      className="bg-gray-300 px-2 py-1 rounded hover:bg-gray-400"
+                      className="bg-gray-300 text-gray-700 px-3 py-1 rounded hover:bg-gray-400 transition"
                     >
                       +
                     </button>
-                    <button 
-                      className="bg-red-500 text-white px-3 py-1 rounded hover:bg-red-600 ml-4" 
+                    <button
                       onClick={() => removeFromCart(item._id)}
+                      className="bg-red-500 text-white px-4 py-1 rounded hover:bg-red-600 transition ml-4"
                     >
                       Remove
                     </button>
@@ -154,9 +172,9 @@ const CartPageContent = () => {
               ) : null
             )}
           </ul>
-          <div className="mt-4 flex justify-end">
+          <div className="mt-6 flex justify-end">
             <Link href="/checkout">
-              <button className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+              <button className="bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-lg transition">
                 Checkout
               </button>
             </Link>
@@ -164,6 +182,8 @@ const CartPageContent = () => {
         </>
       )}
     </div>
+  </div>
+  
   );
 };
 
