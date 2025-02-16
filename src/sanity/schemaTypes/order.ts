@@ -46,7 +46,7 @@ export const order = {
         type: 'array',
         of: [
           {
-            type: 'object',
+            type: 'product',
             name: 'orderItem',
             title: 'Order Item',
             fields: [

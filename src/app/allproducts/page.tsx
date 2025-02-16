@@ -83,7 +83,7 @@ const Products = async () => {
  {/* <Link href="">Addcart</Link> */}
         {/* section-2 */}
         <div className='col-span-12 sm:col-span-9'>
-          <div className='grid grid-cols-3 gap-3 border-b-2 pb-10 mb-6'>
+          <div className='grid grid-cols-2 sm:grid-cols-3 gap-3 border-b-2 pb-10 mb-6'>
             {
               fetchedData.map((storeData:Datatypes) => {                
                 return(
