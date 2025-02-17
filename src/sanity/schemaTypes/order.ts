@@ -32,12 +32,12 @@ export const order = {
     {
       name: 'zip',
       title: 'Zip Code',
-      type: 'number',
+      type: 'string',
     },
     {
       name: 'phone',
       title: 'Phone Number',
-      type: 'number',
+      type: 'string',
     },
     {
       name: 'orderItems',
